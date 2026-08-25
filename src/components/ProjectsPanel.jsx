@@ -1,4 +1,5 @@
-import { FolderGit2, Github, Activity } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { FolderGit2, Activity } from "lucide-react";
 import { GlassPanel } from "./GlassPanel";
 import { projects } from "../data/content";
 
@@ -12,7 +13,7 @@ const ProjectCard = ({ title, tech, description, url }) => (
     <p>{description}</p>
     {url ? (
       <a href={url} target="_blank" rel="noreferrer" className="project-tile-link">
-        <Github size={16} /> View on GitHub
+        <FaGithub size={16} /> View on GitHub
       </a>
     ) : (
       <span className="project-tile-link project-tile-link--disabled">

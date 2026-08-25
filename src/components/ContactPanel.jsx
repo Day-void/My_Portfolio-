@@ -1,4 +1,5 @@
-import { Mail, Github, Linkedin } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Mail } from "lucide-react";
 import { GlassPanel } from "./GlassPanel";
 import { contact } from "../data/content";
 
@@ -14,10 +15,10 @@ export const ContactPanel = () => {
           <Mail size={18} /> {contact.email}
         </a>
         <a href={contact.github} target="_blank" rel="noreferrer" className="contact-link">
-          <Github size={18} /> GitHub
+          <FaGithub size={18} /> GitHub
         </a>
         <a href={contact.linkedin} target="_blank" rel="noreferrer" className="contact-link">
-          <Linkedin size={18} /> LinkedIn
+          <FaLinkedin size={18} /> LinkedIn
         </a>
       </div>
     </GlassPanel>
