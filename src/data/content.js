@@ -96,4 +96,5 @@ export const contact = {
   email: "maringisanwaday@gmail.com",
   github: "https://github.com/Day-void",
   linkedin: "https://www.linkedin.com/in/day-maringisanwa",
+  whatsapp: `https://wa.me/?text=${encodeURIComponent("Hi Day, I came across your portfolio and would like to connect.")}`,
 };

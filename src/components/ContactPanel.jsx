@@ -1,6 +1,6 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { Mail, Github, Linkedin, Send, Loader2 } from "lucide-react";
+import { Mail, Github, Linkedin, MessageCircle, Send, Loader2 } from "lucide-react";
 import { GlassPanel } from "./GlassPanel";
 import { contact } from "../data/content";
 import { useRateLimiter } from "../hooks/useRateLimiter";
@@ -227,6 +227,9 @@ export const ContactPanel = () => {
       <div className="contact-links">
         <a href={`mailto:${contact.email}`} className="contact-link">
           <Mail size={18} aria-hidden="true" /> {contact.email}
+        </a>
+        <a href={contact.whatsapp} target="_blank" rel="noreferrer" className="contact-link">
+          <MessageCircle size={18} aria-hidden="true" /> WhatsApp
         </a>
         <a href={contact.github} target="_blank" rel="noreferrer" className="contact-link">
           <Github size={18} aria-hidden="true" /> GitHub
