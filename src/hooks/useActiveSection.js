@@ -8,8 +8,6 @@ export function useActiveSection(sectionIds) {
       .map((id) => document.getElementById(id))
       .filter(Boolean);
 
-    // Observer callbacks only include sections that just changed, so keep the
-    // latest visibility of every section and pick the most visible one.
     const ratios = new Map();
 
     const observer = new IntersectionObserver(

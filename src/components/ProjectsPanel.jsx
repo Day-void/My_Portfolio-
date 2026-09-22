@@ -5,7 +5,6 @@ import { projects, projectCategories } from "../data/content";
 
 const ALL = "All";
 
-// Every field except `title` and `description` is optional — anything missing is skipped.
 const ProjectCard = ({ title, status, stack = [], description, role, note, image, imageAlt, live, repo }) => {
   return (
     <article className="project-tile">
@@ -62,13 +61,10 @@ const ProjectCard = ({ title, status, stack = [], description, role, note, image
 export const ProjectsPanel = () => {
   const [activeFilter, setActiveFilter] = useState(ALL);
 
-  // Only offer categories that at least one project actually uses,
-  // in the order defined in content.js.
   const filters = projectCategories.filter((category) =>
     projects.some((project) => project.categories?.includes(category))
   );
 
-  // A filter bar with a single option would be pointless, so hide it.
   const showFilters = filters.length >= 2;
 
   const visibleProjects =
@@ -96,14 +92,12 @@ export const ProjectsPanel = () => {
         </div>
       )}
 
-      {/* Announces the result of a filter change to screen readers */}
       <p className="sr-only" role="status" aria-live="polite">
         Showing {visibleProjects.length} project{visibleProjects.length === 1 ? "" : "s"}
         {activeFilter === ALL ? "" : ` in ${activeFilter}`}
       </p>
 
       <div className="project-grid">
-        {/* key includes the filter so cards replay their entrance animation when it changes */}
         {visibleProjects.map((project) => (
           <ProjectCard key={`${activeFilter}-${project.title}`} {...project} />
         ))}

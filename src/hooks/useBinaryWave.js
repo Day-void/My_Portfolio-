@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 const FONT_SIZE = 16;
-// ~30fps is smooth enough for a background effect and far lighter on phones.
 const FRAME_INTERVAL = 1000 / 30 - 2;
 const MAX_DPR = 2;
 
@@ -22,7 +21,6 @@ export function useBinaryWave(canvasRef) {
     let animationId = null;
     let resizeTimer;
 
-    // Reduced motion: one still frame of scattered digits, no animation loop.
     const paintStatic = () => {
       ctx.fillStyle = "rgb(4, 10, 7)";
       ctx.fillRect(0, 0, width, height);
@@ -88,15 +86,11 @@ export function useBinaryWave(canvasRef) {
       width = nextWidth;
       height = nextHeight;
 
-      // Render at device resolution so digits are sharp on high-DPI screens.
       const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR);
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // Only re-seed the columns when the width changes. Mobile browsers fire
-      // resize events when the address bar hides/shows (height only), which
-      // used to restart the whole animation.
       if (widthChanged) {
         columns = Math.floor(width / FONT_SIZE);
         drops = Array.from({ length: columns }, () => Math.random() * height);
@@ -110,7 +104,6 @@ export function useBinaryWave(canvasRef) {
       resizeTimer = setTimeout(resize, 150);
     };
 
-    // Don't burn battery drawing a canvas nobody can see.
     const handleVisibility = () => (document.hidden ? stop() : start());
 
     const handleMotionChange = () => {

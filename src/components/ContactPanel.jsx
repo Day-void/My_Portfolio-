@@ -34,7 +34,6 @@ export const ContactPanel = () => {
   const [status, setStatus] = useState(STATUS.IDLE);
   const [emailError, setEmailError] = useState(null);
 
-  // Max 3 submissions per 5 minutes, tracked per browser.
   const { isLimited, remaining, retryAfterMs, attempt } = useRateLimiter({
     maxAttempts: 3,
     windowMs: 5 * 60_000,
@@ -44,17 +43,12 @@ export const ContactPanel = () => {
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     if (e.target.name === "email") setEmailError(null);
-    // Editing after a result clears the old message.
     if (status === STATUS.SENT || status === STATUS.ERROR) setStatus(STATUS.IDLE);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Honeypot tripped: a bot filled a field real people never see. The field
-    // has an unusual name so browser autofill won't touch it. We show the
-    // generic error rather than a fake success, so the rare real person who
-    // trips it knows to email directly instead of waiting on a reply.
     if (honeypot) {
       setStatus(STATUS.ERROR);
       return;
@@ -72,7 +66,6 @@ export const ContactPanel = () => {
       return;
     }
 
-    // Blocked: the limit message below explains why.
     if (!attempt()) return;
 
     setStatus(STATUS.SENDING);
@@ -131,7 +124,6 @@ export const ContactPanel = () => {
       </p>
 
       <form className="contact-form" onSubmit={handleSubmit}>
-        {/* Honeypot — hidden from real users via CSS, bots fill every field they see */}
         <input
           type="text"
           name="contact_me_by_fax_only"

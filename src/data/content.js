@@ -1,13 +1,9 @@
-// All the text on the site lives here. Every project field except `title`
-// and `description` is optional — anything left out is simply not shown.
-
 export const profile = {
   bio: "I like taking systems apart to understand how they work, and where they break. That curiosity shapes how I build: hashed admin logins, rate-limited forms, and databases that refuse duplicate check-ins. I'm studying software engineering at Uncommon.org, and I build with React, Next.js and Supabase.",
   location: "Harare, Zimbabwe",
   availability: "Open to internships, junior roles and freelance work",
 };
 
-// Words the hero types out after "I'm ...".
 export const heroRoles = [
   "a Software Developer",
   "a React & Next.js Developer",
@@ -38,8 +34,6 @@ export const skillGroups = [
   },
 ];
 
-// Filter buttons on the Projects section, in display order. A button only
-// appears if at least one project uses that category.
 export const projectCategories = ["Frontend", "Full-stack", "AI"];
 
 export const projects = [

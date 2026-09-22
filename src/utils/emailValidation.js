@@ -1,8 +1,4 @@
-// A reasonably strict (not perfect — perfect email regex doesn't exist) format check.
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-// Common disposable/temp-mail domains people use to leave fake contact info.
-// Not exhaustive — new ones appear constantly — but catches the popular ones.
 const DISPOSABLE_DOMAINS = new Set([
   "mailinator.com",
   "guerrillamail.com",
@@ -33,7 +29,6 @@ export function isDisposableEmail(email) {
   return domain ? DISPOSABLE_DOMAINS.has(domain) : false;
 }
 
-// Returns null if the email is fine, or a user-facing error string if not.
 export function validateEmail(email) {
   if (!isValidEmailFormat(email)) {
     return "Please enter a valid email address.";

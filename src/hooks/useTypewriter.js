@@ -1,11 +1,5 @@
 import { useState, useEffect } from "react";
 
-/**
- * Types and deletes through a list of words.
- * `words` should be a stable array (define it outside the component),
- * otherwise the effect restarts on every render.
- * With prefers-reduced-motion it simply returns the first word.
- */
 export function useTypewriter(words, options = {}) {
   const { typingSpeed = 90, deletingSpeed = 50, pauseTime = 1800 } = options;
 

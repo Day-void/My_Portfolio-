@@ -579,8 +579,6 @@
   }
 }
 
-/* ---------- Accessibility helpers ---------- */
-
 .sr-only,
 .sidebar-label {
   position: absolute;
@@ -623,8 +621,6 @@ button:focus-visible {
   box-shadow: 0 0 0 3px rgba(64, 217, 145, 0.25);
 }
 
-/* ---------- Contact feedback + footer ---------- */
-
 .contact-feedback {
   min-height: 20px;
 }
@@ -653,8 +649,6 @@ button:focus-visible {
   margin: 0;
 }
 
-/* ---------- Respect reduced-motion preferences ---------- */
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -677,8 +671,6 @@ button:focus-visible {
     animation: none;
   }
 }
-
-/* ---------- Project filters ---------- */
 
 .project-filters {
   display: flex;
@@ -728,8 +720,6 @@ button:focus-visible {
     transform: translateY(0);
   }
 }
-
-/* ---------- Hero meta + project status/note ---------- */
 
 .hero-meta {
   display: flex;

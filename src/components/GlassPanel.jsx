@@ -1,7 +1,6 @@
 import { useOnScreen } from "../hooks/useOnScreen";
 
 export const GlassPanel = ({ id, title, icon: Icon, children }) => {
-  // `once`: reveal a panel the first time it appears and keep it visible.
   const [ref, isVisible] = useOnScreen({ threshold: 0.2, once: true });
 
   return (
