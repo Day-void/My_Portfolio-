@@ -77,6 +77,7 @@ export const ContactPanel = () => {
           from_name: form.name,
           from_email: form.email,
           message: form.message,
+          to_email: contact.email,
         },
         { publicKey: EMAILJS_PUBLIC_KEY }
       );
