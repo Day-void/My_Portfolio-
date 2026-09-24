@@ -24,13 +24,17 @@ export const Hero = () => {
       </div>
 
       <h1>
-        Hi, I'm <span className="hero-name">Day Maringisanwa</span>
+        <span className="hero-name">Day Maringisanwa</span> is a Software Developer
       </h1>
       <p className="hero-role">
-        I'm <span className="hero-typed">{roleText}</span>
+        Based in Harare, Zimbabwe — <span className="hero-typed">{roleText}</span>
         <span className="hero-cursor" aria-hidden="true">|</span>
       </p>
-      <p className="hero-bio">{profile.bio}</p>
+      <p className="hero-bio">
+        Day Maringisanwa builds secure, user-focused web products with React, Next.js, and Supabase.
+        {" "}
+        {profile.bio}
+      </p>
       <p className="hero-meta">
         <MapPin size={14} aria-hidden="true" />
         <span>
