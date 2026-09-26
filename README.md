@@ -9,20 +9,22 @@ bar on phones).
 ## Features
 
 - Content-driven: all text lives in [`src/data/content.js`](src/data/content.js)
-- Working contact form (EmailJS) with a honeypot, per-browser rate limiting and
-  email validation
+- Working contact form (Resend, via a Vercel serverless function) with a
+  server-side honeypot, per-browser rate limiting and email validation
 - Respects `prefers-reduced-motion`, keyboard navigation and screen readers
-- SEO basics: Open Graph / Twitter cards, JSON-LD, sitemap, robots.txt
+- SEO basics: Open Graph / Twitter cards, JSON-LD, sitemap, robots.txt, and
+  crawler-visible fallback content inside `#root` for scrapers that don't run
+  JavaScript
 
 ## Built with
 
-React 19 · Vite · lucide-react · EmailJS
+React 19 · Vite · lucide-react · Resend
 
 ## Getting started
 
 ```bash
 npm install
-cp .env.example .env   # then fill in your EmailJS keys (see below)
+cp .env.example .env   # then fill in your Resend API key (see below)
 npm run dev
 ```
 
@@ -30,14 +32,18 @@ Open the local URL Vite prints in your browser.
 
 ### Contact form setup
 
-1. Create a free account at [EmailJS](https://dashboard.emailjs.com) and add an
-   email service and a template that uses `{{from_name}}`, `{{from_email}}` and
-   `{{message}}`.
-2. Put the service ID, template ID and public key in `.env`
-   (`VITE_EMAILJS_*` — see `.env.example`).
-3. In the EmailJS dashboard, restrict the allowed domains to your site and turn
-   on reCAPTCHA. The keys ship in the browser bundle, and the in-app rate
-   limiter only protects against accidental spam, not a determined one.
+1. Create a free account at [Resend](https://resend.com) and generate an API
+   key from [resend.com/api-keys](https://resend.com/api-keys).
+2. Put the key in `.env` as `RESEND_API_KEY` (see `.env.example`) — this must
+   **not** be prefixed with `VITE_`, since anything prefixed that way ships
+   inside the client bundle and becomes publicly visible. `RESEND_API_KEY` is
+   read server-side only, inside `api/contact.js`.
+3. Until you verify your own sending domain in Resend, the `from` address
+   stays `onboarding@resend.dev`, which can only deliver to the email address
+   your Resend account itself is registered under. Make sure that's
+   `maringisanwaday@gmail.com`, or messages will silently fail to arrive.
+4. In Vercel, add `RESEND_API_KEY` under Project Settings → Environment
+   Variables (Production and Preview), then redeploy.
 
 ## Scripts
 

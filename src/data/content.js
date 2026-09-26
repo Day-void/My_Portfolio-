@@ -1,5 +1,5 @@
 export const profile = {
-  bio: "I like taking systems apart to understand how they work, and where they break. That curiosity shapes how I build: hashed admin logins, rate-limited forms, and databases that refuse duplicate check-ins. I'm studying software engineering at Uncommon.org, and I build with React, Next.js and Supabase.",
+  bio: "Give me a working system and I'll spend the afternoon trying to break it — that's usually how I end up understanding how it actually works. It's why my projects lean toward hashed logins, rate-limited forms, and databases that quietly refuse to be fooled twice. Outside of code, I teach programming to primary-school kids in my community, which has a way of forcing you to actually understand what you're explaining. Right now I'm studying software engineering at Uncommon.org and building with React, Next.js and Supabase.",
   location: "Harare, Zimbabwe",
   availability: "Open to internships, junior roles and freelance work",
 };
@@ -30,7 +30,7 @@ export const skillGroups = [
   },
   {
     title: "Tools & workflow",
-    items: ["Git & GitHub", "Markdown documentation", "MediaPipe", "Groq API", "EmailJS"],
+    items: ["Git & GitHub", "Markdown documentation", "MediaPipe", "Groq API", "Resend"],
   },
 ];
 
@@ -90,5 +90,5 @@ export const contact = {
   email: "maringisanwaday@gmail.com",
   github: "https://github.com/Day-void",
   linkedin: "https://www.linkedin.com/in/day-maringisanwa",
-  whatsapp: `https://wa.me/?text=${encodeURIComponent("Hi Day, I came across your portfolio and would like to connect.")}`,
+  whatsapp: `https://wa.me/263778733749?text=${encodeURIComponent("Hi Day, I came across your portfolio and would like to connect.")}`,
 };

@@ -1,17 +1,9 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import { Mail, Github, Linkedin, MessageCircle, Send, Loader2 } from "lucide-react";
 import { GlassPanel } from "./GlassPanel";
 import { contact } from "../data/content";
 import { useRateLimiter } from "../hooks/useRateLimiter";
 import { validateEmail } from "../utils/emailValidation";
-
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-const IS_EMAILJS_CONFIGURED = Boolean(
-  EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY
-);
 
 const STATUS = {
   IDLE: "idle",
@@ -60,31 +52,28 @@ export const ContactPanel = () => {
       return;
     }
 
-    if (!IS_EMAILJS_CONFIGURED) {
-      console.error("EmailJS is not configured — copy .env.example to .env and fill it in.");
-      setStatus(STATUS.ERROR);
-      return;
-    }
-
     if (!attempt()) return;
 
     setStatus(STATUS.SENDING);
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          from_email: form.email,
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
           message: form.message,
-          to_email: contact.email,
-        },
-        { publicKey: EMAILJS_PUBLIC_KEY }
-      );
+          // Sent to the server as `company` so the API route's own honeypot
+          // check (independent of this form) can catch a bot that skips the
+          // React UI entirely and POSTs here directly.
+          company: honeypot,
+        }),
+      });
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
       setStatus(STATUS.SENT);
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
-      console.error("EmailJS send failed:", err);
+      console.error("Contact form submission failed:", err);
       setStatus(STATUS.ERROR);
     }
   };
