@@ -5,9 +5,9 @@ import { projects, projectCategories } from "../data/content";
 
 const ALL = "All";
 
-const ProjectCard = ({ title, status, stack = [], description, role, note, image, imageAlt, live, repo }) => {
+const ProjectCard = ({ title, status, stack = [], description, role, note, image, imageAlt, live, repo, featured = false }) => {
   return (
-    <article className="project-tile">
+    <article className={`project-tile ${featured ? "project-tile--featured" : ""}`}>
       {image ? (
         <img
           src={image}
@@ -22,38 +22,40 @@ const ProjectCard = ({ title, status, stack = [], description, role, note, image
         </div>
       )}
 
-      <h3>
-        {title}
-        {status && <span className="project-tile-status">{status}</span>}
-      </h3>
+      <div className="project-tile-body">
+        <h3>
+          {title}
+          {status && <span className="project-tile-status">{status}</span>}
+        </h3>
 
-      {stack.length > 0 && (
-        <ul className="project-tile-stack" aria-label={`${title} technologies`}>
-          {stack.map((tech) => (
-            <li key={tech}>{tech}</li>
-          ))}
-        </ul>
-      )}
+        {stack.length > 0 && (
+          <ul className="project-tile-stack" aria-label={`${title} technologies`}>
+            {stack.map((tech) => (
+              <li key={tech}>{tech}</li>
+            ))}
+          </ul>
+        )}
 
-      {role && <p className="project-tile-role">{role}</p>}
-      <p>{description}</p>
+        {role && <p className="project-tile-role">{role}</p>}
+        <p>{description}</p>
 
-      {(live || repo) && (
-        <div className="project-tile-links">
-          {live && (
-            <a href={live} target="_blank" rel="noreferrer" className="project-tile-link">
-              <ExternalLink size={16} aria-hidden="true" /> Live demo
-            </a>
-          )}
-          {repo && (
-            <a href={repo} target="_blank" rel="noreferrer" className="project-tile-link">
-              <Github size={16} aria-hidden="true" /> Code
-            </a>
-          )}
-        </div>
-      )}
+        {(live || repo) && (
+          <div className="project-tile-links">
+            {live && (
+              <a href={live} target="_blank" rel="noreferrer" className="project-tile-link">
+                <ExternalLink size={16} aria-hidden="true" /> Live demo
+              </a>
+            )}
+            {repo && (
+              <a href={repo} target="_blank" rel="noreferrer" className="project-tile-link">
+                <Github size={16} aria-hidden="true" /> GitHub
+              </a>
+            )}
+          </div>
+        )}
 
-      {note && <p className="project-tile-note">{note}</p>}
+        {note && <p className="project-tile-note">{note}</p>}
+      </div>
     </article>
   );
 };
@@ -98,8 +100,12 @@ export const ProjectsPanel = () => {
       </p>
 
       <div className="project-grid">
-        {visibleProjects.map((project) => (
-          <ProjectCard key={`${activeFilter}-${project.title}`} {...project} />
+        {visibleProjects.map((project, index) => (
+          <ProjectCard
+            key={`${activeFilter}-${project.title}`}
+            {...project}
+            featured={index === 0 && activeFilter === ALL}
+          />
         ))}
       </div>
     </GlassPanel>

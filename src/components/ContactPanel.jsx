@@ -109,8 +109,8 @@ export const ContactPanel = () => {
   return (
     <GlassPanel id="contact" title="Get In Touch" icon={Mail}>
       <p className="glass-panel-subtitle">
-        Feel free to reach out — I'm always open to new opportunities and
-        conversations.
+        I’m open to collaborations, freelance work, and product-minded roles.
+        Send a note and I’ll get back to you.
       </p>
 
       <form className="contact-form" onSubmit={handleSubmit}>
@@ -206,19 +206,23 @@ export const ContactPanel = () => {
         </div>
       </form>
 
-      <div className="contact-links">
-        <a href={`mailto:${contact.email}`} className="contact-link">
-          <Mail size={18} aria-hidden="true" /> {contact.email}
-        </a>
-        <a href={contact.whatsapp} target="_blank" rel="noreferrer" className="contact-link">
-          <MessageCircle size={18} aria-hidden="true" /> WhatsApp
-        </a>
-        <a href={contact.github} target="_blank" rel="noreferrer" className="contact-link">
-          <Github size={18} aria-hidden="true" /> GitHub
-        </a>
-        <a href={contact.linkedin} target="_blank" rel="noreferrer" className="contact-link">
-          <Linkedin size={18} aria-hidden="true" /> LinkedIn
-        </a>
+      <div className="contact-alternatives">
+        <div className="contact-divider" aria-hidden="true" />
+        <div className="contact-links">
+          <a href={`mailto:${contact.email}`} className="contact-link contact-link-email">
+            <Mail size={18} aria-hidden="true" />
+            <span>{contact.email}</span>
+          </a>
+          <a href={contact.whatsapp} target="_blank" rel="noreferrer" className="contact-link">
+            <MessageCircle size={18} aria-hidden="true" /> <span>WhatsApp</span>
+          </a>
+          <a href={contact.github} target="_blank" rel="noreferrer" className="contact-link">
+            <Github size={18} aria-hidden="true" /> <span>GitHub</span>
+          </a>
+          <a href={contact.linkedin} target="_blank" rel="noreferrer" className="contact-link">
+            <Linkedin size={18} aria-hidden="true" /> <span>LinkedIn</span>
+          </a>
+        </div>
       </div>
     </GlassPanel>
   );

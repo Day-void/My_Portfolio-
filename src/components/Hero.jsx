@@ -23,10 +23,12 @@ export const Hero = () => {
         </div>
       </div>
 
-      <h1>
-        <span className="hero-name">Day Maringisanwa</span> is a Software Developer
+      <h1 className="hero-title">
+        <span className="hero-name">Day Maringisanwa</span>
+        <span className="hero-role-heading">Software Developer</span>
       </h1>
-      <p className="hero-role">
+
+      <p className="hero-role-line">
         Based in Harare, Zimbabwe — <span className="hero-typed">{roleText}</span>
         <span className="hero-cursor" aria-hidden="true">|</span>
       </p>
