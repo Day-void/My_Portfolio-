@@ -50,11 +50,12 @@ export const projects = [
   {
     title: "Shadow Coach",
     categories: ["AI", "Full-stack"],
-    status: "In progress",
+    status: "Live",
     stack: ["React", "MediaPipe", "Groq API"],
     role: "Solo project",
     description:
       "A real-time AI fitness coach that tracks jabs, squats, and slip/duck defense reps through your webcam, with live spoken coaching and an AI-generated workout routine via a Groq-powered backend.",
+    live: "https://apex-vert-ten.vercel.app/",
     repo: "https://github.com/Day-void/ShadowCoach",
   },
   {
