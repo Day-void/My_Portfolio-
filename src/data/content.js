@@ -34,7 +34,7 @@ export const skillGroups = [
   },
 ];
 
-export const projectCategories = ["Frontend", "Full-stack", "AI", "Martial arts"];
+export const projectCategories = ["Frontend", "Full-stack", "AI", "Martial Arts"];
 
 export const projects = [
   {
@@ -51,7 +51,7 @@ export const projects = [
   },
   {
     title: "Shadow Coach",
-    categories: ["AI", "Full-stack", "Martial arts"],
+    categories: ["AI", "Full-stack", "Martial Arts"],
     status: "Live",
     stack: ["React", "MediaPipe", "Groq API"],
     role: "Solo project",
