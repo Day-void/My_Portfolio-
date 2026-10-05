@@ -67,6 +67,27 @@ export const projects = [
       "A responsive task management application with Python backend functionality and local storage for persisting tasks.",
     live: "https://to-do-app-qyst.onrender.com/",
   },
+  {
+    title: "Weather App",
+    categories: ["Frontend"],
+    status: "Live",
+    description: "A weather application for checking current conditions and forecasts.",
+    live: "https://weatherapp-xi-plum-53.vercel.app/",
+  },
+  {
+    title: "Quizmaster",
+    categories: ["Frontend"],
+    status: "Live",
+    description: "An interactive quiz application for answering questions and testing your knowledge.",
+    live: "https://quizmaster-taupe.vercel.app/",
+  },
+  {
+    title: "Password Generator",
+    categories: ["Frontend"],
+    status: "Live",
+    description: "A tool for generating passwords.",
+    live: "https://passwordgenerator-nine-rho.vercel.app/",
+  },
 ];
 
 export const experience = [
