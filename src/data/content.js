@@ -44,6 +44,8 @@ export const projects = [
     role: "Team project — backend, admin authentication and QR check-in",
     description:
       "A registration and attendance platform for the OAK Zimbabwe Partner Gathering: attendees get a QR entry pass, staff check them in by scanning it, and coordinators run the event through role-based access and a live attendance dashboard.",
+    image: "/Logo-Oak-Foundation.svg (1) 1 (2).svg",
+    imageAlt: "OAK Foundation logo",
     live: "https://oak-project-2.vercel.app/",
     note: "Live event site — please don't submit test registrations.",
   },
